@@ -1,0 +1,28 @@
+@import url('https://fonts.cdnfonts.com/css/libre-caslon-text');
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Libre Caslon Text', serif;
+  background-color: var(--background, #fff);
+  color: var(--text, #111);
+}
+
+:root {
+  --background: #ffffff;
+  --text: #111111;
+  --primary: #0070f3;
+  --font-size-base: 16px;
+}
+
+[data-theme='dark'] {
+  --background: #111111;
+  --text: #f0f0f0;
+  --primary: #1e90ff;
+}
