@@ -1,0 +1,25 @@
+@use './variables' as *;
+
+:root {
+  --primary: #{map-get($theme-light, primary)};
+  --primary-hover: #{$primary-hover-light};
+  --secondary: #{$second-color};
+  --secondary-hover: #{$secondary-hover-light};
+
+  --background: #{map-get($theme-light, background)};
+  --text: #{map-get($theme-light, text)};
+  --font-family-sans: #{$font-family-sans};
+
+  --spacing-sm: #{$spacing-sm};
+  --radius-md: #{$border-radius-md};
+}
+
+[data-theme='dark'] {
+  --primary: #{map-get($theme-dark, primary)};
+  --primary-hover: #{$primary-hover-dark};
+  --secondary: #{$second-color};
+  --secondary-hover: #{$secondary-hover-dark};
+
+  --background: #{map-get($theme-dark, background)};
+  --text: #{map-get($theme-dark, text)};
+}

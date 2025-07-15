@@ -1,8 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import ClientBootstrapLoader from '../ClientBootstrapLoader';
-import '@styles/languageDropdown.scss';
+import ClientBootstrapLoader from '../../presentation/components/ui/ClientBootstrapLoader';
 
 export default function LanguageDropdown() {
   const [currentLang, setCurrentLang] = useState('EN');

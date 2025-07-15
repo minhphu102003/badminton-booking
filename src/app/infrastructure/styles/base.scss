@@ -1,0 +1,23 @@
+@use './variables' as *;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background: #{map-get($theme-light, background)};
+  --text: #{map-get($theme-light, text)};
+  --primary: #{map-get($theme-light, primary)};
+  --font-size-base: #{$font-size-base};
+}
+
+body {
+  font-family: #{$font-family-sans};
+  --font-size-base: #{$font-size-base};
+  background-color: var(--background);
+  color: var(--text);
+}
