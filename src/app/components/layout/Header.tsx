@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import '@styles/header.scss';
-import LanguageDropdown from '../dropDown/LanguageDropdown';
+import '../../styles/header.scss';
+import { Button } from '@/app/presentation/components/ui/Button';
+import LanguageDropdown from '@presentation/components/LanguageDropdown/LanguageDropdown';
 
 export default function Header() {
   return (
@@ -19,19 +20,13 @@ export default function Header() {
           <ul className="d-flex align-items-center list-unstyled header__nav">
             <LanguageDropdown />
             <li>
-              <button className="btn btn-" type="button">
-                Help
-              </button>
+              <Button variant="ghost">Help</Button>
             </li>
             <li>
-              <button className="btn" type="button">
-                Sign Up
-              </button>
+              <Button variant="ghost">Sign Up</Button>
             </li>
             <li>
-              <button className="btn btn-primary" type="button">
-                Log In
-              </button>
+              <Button variant="primary">Log In</Button>
             </li>
           </ul>
         </div>
