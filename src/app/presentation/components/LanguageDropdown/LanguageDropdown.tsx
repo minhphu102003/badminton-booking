@@ -1,18 +1,28 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-// import style from './languageDropdown.module.scss';
 import { languageService } from '@/app/application/language/services/languageService';
 import GlobeIcon from '../../icons/GlobeIcon';
 import ClientBootstrapLoader from '../ui/ClientBootstrapLoader';
-import { Dropdown } from '../ui/Dropdown';
+import { Dropdown } from '../ui/DropDown';
 
 export default function LanguageDropdown() {
   const [currentLang, setCurrentLang] = useState('EN');
 
   useEffect(() => {
-    setCurrentLang(languageService.getLanguage());
+    setCurrentLang(languageService.getLanguage().toUpperCase());
   }, []);
+
+  const items = [
+    {
+      label: 'EN',
+      onClick: () => languageService.setLanguage('en'),
+    },
+    {
+      label: 'VN',
+      onClick: () => languageService.setLanguage('vn'),
+    },
+  ];
 
   return (
     <>
@@ -23,18 +33,8 @@ export default function LanguageDropdown() {
             <GlobeIcon /> {currentLang}
           </>
         }
-      >
-        <li>
-          <button className="dropdown-item" onClick={() => languageService.setLanguage('en')}>
-            English
-          </button>
-        </li>
-        <li>
-          <button className="dropdown-item" onClick={() => languageService.setLanguage('vn')}>
-            Vietnamese
-          </button>
-        </li>
-      </Dropdown>
+        items={items}
+      />
     </>
   );
 }

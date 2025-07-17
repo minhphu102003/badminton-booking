@@ -1,5 +1,5 @@
 import 'react';
-import './Button.module.scss';
+import './Button.scss';
 
 type Props = {
   children: React.ReactNode;
@@ -17,7 +17,11 @@ export default function Button({
   variant = 'primary',
 }: Props) {
   return (
-    <button type={type} onClick={onClick} className={`btn btn-${variant} ${className}`}>
+    <button
+      type={type}
+      onClick={onClick}
+      className={`btn btn-custom btn-custom-${variant} ${className}`}
+    >
       {children}
     </button>
   );
