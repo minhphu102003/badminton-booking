@@ -21,3 +21,21 @@ body {
   background-color: var(--background);
   color: var(--text);
 }
+
+.no-hover:hover {
+  background-color: inherit !important;
+  color: inherit !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+}
+
+.placeholder-nowrap::placeholder {
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: ellipsis;
+}
+
+.no-focus:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
