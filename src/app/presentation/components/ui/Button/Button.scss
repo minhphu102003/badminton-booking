@@ -3,6 +3,11 @@
   border-radius: var(--radius-md);
   transition: background-color 0.2s ease;
 
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
   &-primary {
     background-color: var(--primary);
     color: white;
@@ -25,12 +30,35 @@
 
   &-ghost {
     background-color: transparent;
-    color: var(--primary);
+    color: black;
 
     &:hover {
       background-color: rgb(224, 224, 224);
       border-radius: 15px;
       transition: all 0.2 ease;
+    }
+  }
+  &-category {
+    background-color: transparent;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 6px 12px;
+    transition: all 0.2s ease-in-out;
+    font-size: 0.875rem;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+
+    &.active {
+      color: #007bff;
+      border-color: #007bff;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      pointer-events: none;
     }
   }
 }

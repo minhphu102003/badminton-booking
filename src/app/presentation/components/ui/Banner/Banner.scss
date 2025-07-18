@@ -1,0 +1,31 @@
+.banner {
+  background-image: url('https://t3.ftcdn.net/jpg/03/10/62/12/360_F_310621281_foEqKBGtGlNWFQRePgdF5BpLOFyTsnzO.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  .banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+
+  .banner__content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+
+    .search-box {
+      border-radius: 50px;
+      width: 70vw;
+      height: 10vh;
+      background-color: white;
+      padding: 10px 0px;
+      margin: 0 auto;
+    }
+  }
+}
