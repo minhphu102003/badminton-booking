@@ -1,4 +1,4 @@
-import SearchForm from '../Form/SearchForm';
+import { SearchFormContainer } from '../../Form';
 import './Banner.scss';
 
 type Props = {
@@ -16,7 +16,7 @@ export default function BannerWithSearch({ onSearch }: Props) {
           of sports nationwide!
         </p>
         <div className="search-box d-flex justify-content-center">
-          <SearchForm onSearch={onSearch} />
+          <SearchFormContainer onSearch={onSearch} />
         </div>
       </div>
     </section>
