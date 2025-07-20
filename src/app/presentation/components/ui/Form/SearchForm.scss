@@ -17,4 +17,30 @@
       display: none;
     }
   }
+
+  #location-input {
+    border: none;
+    &:focus,
+    &:hover {
+      outline: none;
+      box-shadow: none;
+    }
+  }
+
+  .clear-icon {
+    font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+  .datepicker-wrapper {
+    position: absolute;
+    top: 110%;
+    left: 0;
+    z-index: 1000;
+    min-width: 250px;
+  }
 }

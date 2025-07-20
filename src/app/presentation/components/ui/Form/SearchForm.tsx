@@ -1,27 +1,24 @@
 import './SearchForm.scss';
+import { useRef, useState } from 'react';
+import { SEARCH_DEFAULTS } from '@presentation/constants/searchDefaults';
 import { SportCategory } from '@presentation/constants/sportCategories';
 import { SportItem, SPORTS_DATA } from '@presentation/constants/sports';
+import { useClickOutside } from '@presentation/hooks/useClickOutside';
 import { Button } from '../Button';
+import { DatePicker } from '../DatePicker';
 import { SportCategoryModal } from '../Modal';
 import { LocationSuggest } from '../Suggest';
 
 type SearchFormTexts = {
   sport: string;
   location: string;
-  time: string;
 };
 
 type SearchFormHandlers = {
-  onSportClick: () => void;
-  onLocationClick: () => void;
-  onTimeClick: () => void;
   onSearch: () => void;
 };
 
 type SearchFormModal = {
-  open: boolean;
-  ref: React.RefObject<HTMLDivElement | null>;
-  onClose: () => void;
   categories: SportCategory[];
   onSelect: (sport: SportItem | null) => void;
 };
@@ -30,26 +27,37 @@ type Props = {
   texts: SearchFormTexts;
   handlers: SearchFormHandlers;
   modal: SearchFormModal;
-  locationSuggestions: string[];
-  showLocationSuggest: boolean;
   setLocation: (loc: string) => void;
-  setShowLocationSuggest: (show: boolean) => void;
   onLocationSelect: (loc: string) => void;
+  allLocationSuggestions: string[];
 };
 
 export default function SearchFormUI({
   texts,
   handlers,
   modal,
-  locationSuggestions,
-  showLocationSuggest,
   setLocation,
-  setShowLocationSuggest,
   onLocationSelect,
+  allLocationSuggestions,
 }: Props) {
-  const { sport, location, time } = texts;
-  const { onSportClick, onTimeClick, onSearch } = handlers;
-  const { open, ref, onClose, categories, onSelect } = modal;
+  const { sport, location } = texts;
+  const [time, setTime] = useState(SEARCH_DEFAULTS.TIME);
+  const { onSearch } = handlers;
+  const { categories, onSelect } = modal;
+  const [showLocationSuggest, setShowLocationSuggest] = useState(false);
+  const [locationSuggestions, setLocationSuggestions] = useState<string[]>(allLocationSuggestions);
+  const [open, setOpen] = useState(false);
+  const [openDatePicker, setOpenDatePicker] = useState(false);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const locationSuggestRef = useRef<HTMLDivElement>(null);
+  useClickOutside(modalRef, () => setOpen(false), open);
+  useClickOutside(
+    locationSuggestRef,
+    () => {
+      setShowLocationSuggest(false);
+    },
+    showLocationSuggest,
+  );
 
   return (
     <div className="search-form d-flex justify-content-between align-items-center gap-4 w-100 px-4">
@@ -58,11 +66,11 @@ export default function SearchFormUI({
           <Button
             variant="ghost"
             className="d-flex flex-column align-items-start gap-1 no-hover"
-            onClick={onSportClick}
+            onClick={() => setOpen(true)}
           >
             <span className="fw-high text-black">Sport</span>
             <span className="text-muted small">{sport}</span>
-            {sport !== 'Select a sport' && (
+            {sport !== SEARCH_DEFAULTS.SPORT && (
               <span
                 className="position-absolute top-50 end-0 text-black cursor-pointer"
                 onClick={(e) => {
@@ -77,9 +85,9 @@ export default function SearchFormUI({
         </div>
 
         {open && (
-          <div ref={ref}>
+          <div ref={modalRef}>
             <SportCategoryModal
-              onClose={onClose}
+              onClose={() => setOpen(false)}
               categories={categories}
               sportsData={SPORTS_DATA}
               onSelectSport={onSelect}
@@ -91,34 +99,66 @@ export default function SearchFormUI({
           <label className="fw-high text-black" htmlFor="location-input">
             Where
           </label>
-          <input
-            id="location-input"
-            className="form-control form-control-sm text-muted"
-            placeholder="Search venue name, city"
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            onFocus={() => setShowLocationSuggest(true)}
-          />
-          {showLocationSuggest && locationSuggestions.length > 0 && (
-            <LocationSuggest
-              suggestions={locationSuggestions}
-              onSelect={(loc) => {
-                onLocationSelect(loc);
-                setShowLocationSuggest(false);
+          <div className="position-relative w-100">
+            <input
+              id="location-input"
+              className="form-control form-control-sm text-muted no-outline pe-4"
+              placeholder="Search venue name, city"
+              value={location}
+              onChange={(e) => {
+                const newValue = e.target.value;
+                setLocation(newValue);
+                setShowLocationSuggest(true);
+
+                const filtered = allLocationSuggestions.filter((item) =>
+                  item.toLowerCase().includes(newValue.toLowerCase()),
+                );
+                setLocationSuggestions(filtered);
               }}
+              onFocus={() => setShowLocationSuggest(true)}
             />
+            {location !== SEARCH_DEFAULTS.LOCATION && (
+              <span
+                className="clear-icon position-absolute top-50 end-0 translate-middle-y me-2 text-black"
+                onClick={() => {
+                  setLocation(SEARCH_DEFAULTS.LOCATION);
+                  setShowLocationSuggest(false);
+                }}
+              >
+                &times;
+              </span>
+            )}
+          </div>
+
+          {showLocationSuggest && locationSuggestions.length > 0 && (
+            <div ref={locationSuggestRef}>
+              <LocationSuggest
+                suggestions={locationSuggestions}
+                onSelect={(loc) => {
+                  onLocationSelect(loc);
+                  setShowLocationSuggest(false);
+                }}
+              />
+            </div>
           )}
         </div>
 
-        <div className="form-group">
+        <div className="form-group position-relative">
           <Button
             variant="ghost"
             className="d-flex flex-column align-items-start gap-1 no-hover"
-            onClick={onTimeClick}
+            onClick={() => setOpenDatePicker(true)}
+            disabled={sport === SEARCH_DEFAULTS.SPORT && location === SEARCH_DEFAULTS.LOCATION}
           >
             <span className="fw-high text-black">When</span>
             <span className="text-muted small">{time}</span>
           </Button>
+
+          {openDatePicker && (
+            <div className="datepicker-wrapper">
+              <DatePicker onChange={(value: string) => setTime(value)} />
+            </div>
+          )}
         </div>
       </div>
 
