@@ -37,16 +37,18 @@ export default function SportCategoryModal({
         onClick={(e) => e.stopPropagation()}
       >
         <div className="modal-content">
+          <div className="m-2">
+            <div className="d-flex align-items-center gap-3 item mx-2 border rounded px-4 py-1">
+              <SearchIcon />
+              <input
+                type="text"
+                placeholder="Search sport category"
+                className="border-0 no-focus"
+              />
+            </div>
+          </div>
           <div className="scroll-wrapper">
             <div className="modal-body d-flex flex-column gap-3">
-              <div className="d-flex align-items-center gap-3 item px-2 py-1 border rounded">
-                <SearchIcon />
-                <input
-                  type="text"
-                  placeholder="Search sport category"
-                  className="border-0 no-focus"
-                />
-              </div>
               <div className="d-flex flex-wrap">
                 {categories.map((item, index) => (
                   <Button
