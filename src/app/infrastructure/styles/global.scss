@@ -3,3 +3,6 @@
 @use './fonts';
 @use './bootstrap';
 @use './base';
+@use 'abstracts/variables';
+@use 'base/typography';
+@use 'components/title';

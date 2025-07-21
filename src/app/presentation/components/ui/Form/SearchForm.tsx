@@ -50,6 +50,7 @@ export default function SearchFormUI({
   const [openDatePicker, setOpenDatePicker] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
   const locationSuggestRef = useRef<HTMLDivElement>(null);
+  const datepickerRef = useRef<HTMLDivElement>(null);
   useClickOutside(modalRef, () => setOpen(false), open);
   useClickOutside(
     locationSuggestRef,
@@ -58,6 +59,8 @@ export default function SearchFormUI({
     },
     showLocationSuggest,
   );
+
+  useClickOutside(datepickerRef, () => setOpenDatePicker(false), openDatePicker);
 
   return (
     <div className="search-form d-flex justify-content-between align-items-center gap-4 w-100 px-4">
@@ -155,7 +158,7 @@ export default function SearchFormUI({
           </Button>
 
           {openDatePicker && (
-            <div className="datepicker-wrapper">
+            <div ref={datepickerRef} className="datepicker-wrapper">
               <DatePicker onChange={(value: string) => setTime(value)} />
             </div>
           )}

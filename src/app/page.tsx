@@ -1,7 +1,7 @@
 import Footer from '@/app/presentation/layout/Footer';
-import Landing from '@components/home/Landing';
 import { Banner } from '@presentation/components/Banner';
 import { Header } from '@presentation/components/Header';
+import { Landing } from '@presentation/components/Landing';
 
 export default function HomePage() {
   return (
