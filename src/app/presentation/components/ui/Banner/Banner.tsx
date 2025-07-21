@@ -7,7 +7,7 @@ type Props = {
 
 export default function BannerWithSearch({ onSearch }: Props) {
   return (
-    <section className="banner position-relative text-white">
+    <section className="banner position-relative text-white mb-5">
       <div className="banner__overlay"></div>
       <div className="banner__content container text-center">
         <h1 className="mb-2">Get Active, Book Your Games Now</h1>

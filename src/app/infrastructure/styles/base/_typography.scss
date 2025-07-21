@@ -1,0 +1,16 @@
+@use '../abstracts/variables' as *;
+
+.title-xl {
+  font-size: $font-size-title-xl;
+  font-weight: $font-weight-bold;
+}
+
+.title-lg {
+  font-size: $font-size-title-lg;
+  font-weight: $font-weight-medium;
+}
+
+.title-md {
+  font-size: $font-size-title-md;
+  font-weight: $font-weight-medium;
+}

@@ -1,0 +1,36 @@
+.see-more-btn {
+  margin-top: 20px;
+  border: 1px solid;
+  max-width: 200px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: aliceblue;
+    border: 1px solid;
+  }
+}
+
+.venue-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  width: 100%;
+  padding: 0 12px;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.venue-grid__item {
+  display: flex;
+  justify-content: center;
+}
