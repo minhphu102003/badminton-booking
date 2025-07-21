@@ -12,7 +12,34 @@
   --background: #{map-get($theme-light, background)};
   --text: #{map-get($theme-light, text)};
   --primary: #{map-get($theme-light, primary)};
+  --primary-hover: #{$primary-hover-light};
   --font-size-base: #{$font-size-base};
+
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.5rem;
+
+  --radius-sm: #{$border-radius-sm};
+  --radius-md: #{$border-radius-md};
+  --radius-lg: #{$border-radius-lg};
+  --radius-xl: #{$border-radius-xl};
+  --radius-pill: #{$border-radius-pill};
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);
+
+  --tw-text-opacity: 1;
+  --text-secondary: rgb(132 130 144 / var(--tw-text-opacity));
 }
 
 body {
