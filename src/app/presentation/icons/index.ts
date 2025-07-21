@@ -4,3 +4,8 @@ export { default as GeoIcon } from './GeoIcon';
 export { default as EyeIcon } from './EyeIcon';
 export { default as ChevronLeftIcon } from './ChevronLeftIcon';
 export { default as ChevronRightIcon } from './ChevronRightIcon';
+export { default as FacebookIcon } from './FacebookIcon';
+export { default as InstagramIcon } from './InstagramIcon';
+export { default as LinkedinIcon } from './LinkedinIcon';
+export { default as TiktokIcon } from './TiktokIcon';
+export { default as WhatsappIcon } from './WhatsappIcon';

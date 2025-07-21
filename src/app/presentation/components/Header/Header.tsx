@@ -1,6 +1,6 @@
 import './header.scss';
 import { HeaderNav } from '../HeaderNav';
-import { HeaderLogo } from '../Logo';
+import { HeaderLogo } from '../ui/Logo';
 import { HeaderMenu } from '../ui/Wrapper';
 
 export default function Header() {

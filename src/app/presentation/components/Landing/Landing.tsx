@@ -2,9 +2,11 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { blogListData } from '../../constants/blogList';
 import { SPORT_VENUE_LIST, SPORT_VENUES_BY_SPORT } from '../../constants/sportVenue';
 import { SportList } from '../ui/List';
 import { ListVenue } from '../ui/List';
+import { ListBlog } from '../ui/List';
 
 export default function Landing() {
   const [selectedSport, setSelectedSport] = useState('football');
@@ -35,6 +37,8 @@ export default function Landing() {
         onView={handleView}
         onBook={handleBook}
       />
+
+      <ListBlog data={blogListData} />
     </section>
   );
 }
