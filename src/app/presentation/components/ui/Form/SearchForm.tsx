@@ -1,3 +1,5 @@
+'use client';
+
 import './SearchForm.scss';
 import { useRef, useState } from 'react';
 import { SEARCH_DEFAULTS } from '@presentation/constants/searchDefaults';

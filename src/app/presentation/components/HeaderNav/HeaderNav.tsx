@@ -1,5 +1,4 @@
-'use client';
-
+import Link from 'next/link';
 import React from 'react';
 import { LanguageDropdown } from '../LanguageDropdown';
 import { Button } from '../ui/Button';
@@ -8,13 +7,13 @@ import './HeaderNav.scss';
 type NavItem = {
   label: string;
   variant: 'ghost' | 'primary' | 'secondary';
-  onClick?: () => void;
+  href: string;
 };
 
 const navItems: NavItem[] = [
-  { label: 'Help', variant: 'ghost', onClick: () => console.log('Help clicked') },
-  { label: 'Sign Up', variant: 'ghost', onClick: () => console.log('Sign Up clicked') },
-  { label: 'Log In', variant: 'primary', onClick: () => console.log('Log In clicked') },
+  { label: 'Help', variant: 'ghost', href: '/help' },
+  { label: 'Sign Up', variant: 'ghost', href: '/register' },
+  { label: 'Log In', variant: 'primary', href: '/login' },
 ];
 
 export default function HeaderNav() {
@@ -23,9 +22,9 @@ export default function HeaderNav() {
       <LanguageDropdown />
       {navItems.map((item, idx) => (
         <li key={idx}>
-          <Button variant={item.variant} onClick={item.onClick}>
-            {item.label}
-          </Button>
+          <Link href={item.href}>
+            <Button variant={item.variant}>{item.label}</Button>
+          </Link>
         </li>
       ))}
     </ul>

@@ -1,3 +1,5 @@
+'use client';
+
 import './SportCategoryModal.scss';
 import { useEffect, useState } from 'react';
 import { SearchIcon } from '@/app/presentation/icons';
