@@ -33,6 +33,7 @@ export default function RegisterForm({
       </div>
 
       <div className="form-content d-flex flex-column">
+        <TextInput label="Full Name" register={register('name')} error={errors.name} />
         <TextInput label="Email" register={register('email')} error={errors.email} />
         <TextInput
           label="Password"
