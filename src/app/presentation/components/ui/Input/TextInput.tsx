@@ -24,7 +24,7 @@ export default function TextInput({
   register,
 }: Props) {
   const [showPassword, setShowPassword] = useState(false);
-
+  console.log(error);
   return (
     <div className={`text-input ${className}`}>
       <label className="form-label">{label}</label>
@@ -62,7 +62,7 @@ export default function TextInput({
       <AnimatePresence mode="wait">
         {error && (
           <motion.div
-            className="invalid-feedback my-1 "
+            className="invalid-feedback my-1"
             initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
