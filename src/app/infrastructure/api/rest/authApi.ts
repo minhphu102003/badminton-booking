@@ -1,18 +1,17 @@
-import { LoginInput } from '@domain/validation/loginSchema';
+import { LoginInput } from '@/app/domain/validation/loginSchema';
+import { RegisterInput } from '@/app/domain/validation/registerSchema';
+import { User } from '../../store/api/auth/types';
+import { BaseApiService } from './baseApiService';
+import { API_ENDPOINTS } from './endPoints';
 
-export async function loginApi(data: LoginInput) {
-  const res = await fetch('/api/auth/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-
-  if (!res.ok) {
-    const error = await res.json();
-    throw new Error(error.message || 'Login failed');
+export class AuthApiService extends BaseApiService {
+  login(data: LoginInput) {
+    return this.post<LoginInput, User>(API_ENDPOINTS.LOGIN, data);
   }
 
-  return res.json();
+  register(data: RegisterInput) {
+    return this.post<RegisterInput, User>(API_ENDPOINTS.REGISTER, data);
+  }
 }
+
+export const authApiService = new AuthApiService();

@@ -1,17 +1,15 @@
 import { CourtsBooking } from '@entities/court-booking.entity';
 import { SET_BOOKINGS } from './actionTypes';
 
-type BookingState = {
+export interface BookingState {
   bookings: CourtsBooking[];
-};
+}
 
 const initialState: BookingState = {
   bookings: [],
 };
 
-type BookingAction =
-  | { type: typeof SET_BOOKINGS; payload: CourtsBooking[] }
-  | { type: string; payload?: unknown };
+export type BookingAction = { type: typeof SET_BOOKINGS; payload: CourtsBooking[] };
 
 export const bookingReducer = (
   state: BookingState = initialState,
