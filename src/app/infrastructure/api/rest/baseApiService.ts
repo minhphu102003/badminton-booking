@@ -1,3 +1,5 @@
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || '';
+
 export class BaseApiService {
   constructor(private token?: string) {}
 
@@ -12,7 +14,7 @@ export class BaseApiService {
   }
 
   protected async get<TResult>(url: string): Promise<TResult> {
-    const res = await fetch(url, {
+    const res = await fetch(`${BASE_URL}${url}`, {
       method: 'GET',
       headers: this.getHeaders(),
     });
@@ -25,7 +27,7 @@ export class BaseApiService {
     data: TData,
     isFormData: boolean = false,
   ): Promise<TResult> {
-    const res = await fetch(url, {
+    const res = await fetch(`${BASE_URL}${url}`, {
       method: 'POST',
       headers: this.getHeaders(isFormData),
       body: isFormData ? (data as unknown as FormData) : JSON.stringify(data),
@@ -39,7 +41,7 @@ export class BaseApiService {
     data: TData,
     isFormData: boolean = false,
   ): Promise<TResult> {
-    const res = await fetch(url, {
+    const res = await fetch(`${BASE_URL}${url}`, {
       method: 'PUT',
       headers: this.getHeaders(isFormData),
       body: isFormData ? (data as unknown as FormData) : JSON.stringify(data),
@@ -49,7 +51,7 @@ export class BaseApiService {
   }
 
   protected async delete<TResult>(url: string): Promise<TResult> {
-    const res = await fetch(url, {
+    const res = await fetch(`${BASE_URL}${url}`, {
       method: 'DELETE',
       headers: this.getHeaders(),
     });

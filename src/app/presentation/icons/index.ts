@@ -10,3 +10,4 @@ export { default as LinkedinIcon } from './LinkedinIcon';
 export { default as TiktokIcon } from './TiktokIcon';
 export { default as WhatsappIcon } from './WhatsappIcon';
 export { default as EyeSlashIcon } from './EyeSlashIcon';
+export { default as PencilIcon } from './PencilIcon';
