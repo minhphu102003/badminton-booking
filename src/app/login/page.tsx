@@ -4,9 +4,10 @@ import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { showSuccess, showError } from '@/app/infrastructure/ui/toast';
 import { LoginInput } from '@domain/validation/loginSchema';
+import { localStorageService } from '@infrastructure/browser/localStorage';
 import { loginUser } from '@infrastructure/store/api/auth/actions';
+import { AppDispatch } from '@infrastructure/store/store';
 import { LoginForm } from '@presentation/components/ui/Form';
-import { AppDispatch } from '../infrastructure/store/store';
 
 export default function LoginPage() {
   const dispatch = useDispatch<AppDispatch>();
@@ -16,6 +17,7 @@ export default function LoginPage() {
     await dispatch(
       loginUser(data, {
         onSuccess: (user) => {
+          localStorageService.setObject('auth_user', user);
           showSuccess(`Welcome ${user.name}!`);
           router.push('/');
         },

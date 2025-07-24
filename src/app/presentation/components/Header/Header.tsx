@@ -1,9 +1,30 @@
+'use client';
+
 import './header.scss';
-import { HeaderNav } from '../HeaderNav';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { localStorageService } from '@infrastructure/browser/localStorage';
+import { User } from '@infrastructure/store/api/auth/types';
+import { RootState } from '@infrastructure/store/rootReducer';
+import { HeaderNav } from '../ui/HeaderNav';
 import { HeaderLogo } from '../ui/Logo';
 import { HeaderMenu } from '../ui/Wrapper';
 
 export default function Header() {
+  const reduxUser = useSelector((state: RootState) => state.auth.user);
+  const [user, setUser] = useState<User | null>(reduxUser);
+
+  useEffect(() => {
+    if (!reduxUser) {
+      const storedUser = localStorageService.getObject<User>('auth_user');
+      if (storedUser) {
+        setUser(storedUser);
+      }
+      return;
+    }
+    setUser(reduxUser);
+  }, [reduxUser]);
+
   return (
     <header>
       <div className="header">
@@ -13,7 +34,7 @@ export default function Header() {
               src="https://png.pngtree.com/element_pic/00/16/09/2057e0eecf792fb.jpg"
               href="/"
             />
-            <HeaderNav />
+            <HeaderNav user={user} />
           </div>
         </div>
       </div>

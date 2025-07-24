@@ -29,6 +29,7 @@ export const loginUser = (credentials: LoginCredentials, callbacks: LoginCallbac
 
     try {
       const user = await authApiService.login(credentials);
+      console.log(user);
       dispatch({ type: 'LOGIN_SUCCESS', payload: user });
       onSuccess?.(user);
       return user;
