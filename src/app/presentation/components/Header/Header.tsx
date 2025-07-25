@@ -10,7 +10,11 @@ import { HeaderNav } from '../ui/HeaderNav';
 import { HeaderLogo } from '../ui/Logo';
 import { HeaderMenu } from '../ui/Wrapper';
 
-export default function Header() {
+type HeaderProps = {
+  isAuth?: boolean;
+};
+
+export default function Header({ isAuth = false }: HeaderProps) {
   const reduxUser = useSelector((state: RootState) => state.auth.user);
   const [user, setUser] = useState<User | null>(reduxUser);
 
@@ -38,9 +42,11 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div className="wrapper__headerMenu">
-        <HeaderMenu />
-      </div>
+      {!isAuth && (
+        <div className="wrapper__headerMenu">
+          <HeaderMenu />
+        </div>
+      )}
     </header>
   );
 }
