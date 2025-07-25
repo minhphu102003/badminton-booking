@@ -26,7 +26,7 @@ export default function LoginForm({
         <h2 className="title title-lg">Log In</h2>
         <p>
           Don&apos;t have a Badminton account yet?{' '}
-          <Link href="/signUp" className="link-primary fw-semibold">
+          <Link href="/register" className="link-primary fw-semibold">
             Sign Up
           </Link>
         </p>

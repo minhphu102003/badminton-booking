@@ -44,7 +44,7 @@ export default function BlogList({ data }: Props) {
             {section.blogs.map((blog, blogIndex) => (
               <motion.div
                 key={blog.id}
-                className="col-12 col-sm-6 col-md-3"
+                className="col-12 col-sm-6 col-md-4 col-lg-3"
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.3, delay: blogIndex * 0.1 }}

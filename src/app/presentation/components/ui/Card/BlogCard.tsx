@@ -19,9 +19,10 @@ export default function BlogCard({ imgUrl, onClick }: Props) {
       <Image
         alt="Blog thumbnail"
         src={imgUrl}
+        layout="responsive"
         className="rounded shadow-sm"
         width={260}
-        height={200}
+        height={240}
       />
     </motion.div>
   );
