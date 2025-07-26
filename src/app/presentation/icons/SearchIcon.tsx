@@ -1,3 +1,5 @@
-export default function SearchIcon() {
-  return <i className="bi bi-search"></i>;
+import BaseIcon from './BaseIcon';
+
+export default function SearchIcon(props: React.HTMLAttributes<HTMLSpanElement>) {
+  return <BaseIcon iconClass="bi bi-search" {...props} />;
 }

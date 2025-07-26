@@ -1,3 +1,5 @@
-export default function GlobeIcon() {
-  return <i className="bi bi-geo-alt" aria-hidden="true"></i>;
+import BaseIcon from './BaseIcon';
+
+export default function GlobeIcon(props: React.HTMLAttributes<HTMLSpanElement>) {
+  return <BaseIcon iconClass="bi bi-geo-alt" {...props} />;
 }

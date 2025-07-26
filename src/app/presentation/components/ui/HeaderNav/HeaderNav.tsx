@@ -82,13 +82,27 @@ export default function HeaderNav({ user }: HeaderNavProps) {
           )}
         </li>
       ) : (
-        navItems.map((item, idx) => (
-          <li key={idx}>
-            <Link href={item.href}>
-              <Button variant={item.variant}>{item.label}</Button>
-            </Link>
-          </li>
-        ))
+        <>
+          {navItems
+            .filter((item) => item.label !== 'Log In')
+            .map((item, idx) => (
+              <li key={idx} className="hide-on-mobile">
+                <Link href={item.href}>
+                  <Button variant={item.variant}>{item.label}</Button>
+                </Link>
+              </li>
+            ))}
+
+          {navItems
+            .filter((item) => item.label === 'Log In')
+            .map((item, idx) => (
+              <li key={`login-${idx}`}>
+                <Link href={item.href}>
+                  <Button variant={item.variant}>{item.label}</Button>
+                </Link>
+              </li>
+            ))}
+        </>
       )}
     </ul>
   );

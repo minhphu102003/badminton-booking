@@ -1,3 +1,5 @@
-export default function TiktokIcon() {
-  return <i className="bi bi-tiktok"></i>;
+import BaseIcon from './BaseIcon';
+
+export default function TiktokIcon(props: React.HTMLAttributes<HTMLSpanElement>) {
+  return <BaseIcon iconClass="bi bi-tiktok" {...props} />;
 }

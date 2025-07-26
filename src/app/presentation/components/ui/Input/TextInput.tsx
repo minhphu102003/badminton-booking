@@ -24,7 +24,6 @@ export default function TextInput({
   register,
 }: Props) {
   const [showPassword, setShowPassword] = useState(false);
-  console.log(error);
   return (
     <div className={`text-input ${className}`}>
       <label className="form-label">{label}</label>

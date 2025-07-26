@@ -1,3 +1,5 @@
-export default function WhatsappIcon() {
-  return <i className="bi bi-whatsapp"></i>;
+import BaseIcon from './BaseIcon';
+
+export default function WhatsappIcon(props: React.HTMLAttributes<HTMLSpanElement>) {
+  return <BaseIcon iconClass="bi bi-whatsapp" {...props} />;
 }

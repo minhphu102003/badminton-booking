@@ -1,11 +1,5 @@
-import React from 'react';
+import BaseIcon from './BaseIcon';
 
-type PencilIconProps = React.HTMLAttributes<HTMLSpanElement>;
-
-export default function PencilIcon(props: PencilIconProps) {
-  return (
-    <span {...props}>
-      <i className="bi bi-pencil" />
-    </span>
-  );
+export default function EditIcon(props: React.HTMLAttributes<HTMLSpanElement>) {
+  return <BaseIcon iconClass="bi bi-pencil" {...props} />;
 }
