@@ -1,0 +1,48 @@
+.sidebar {
+  width: 15vw;
+  margin-right: 20px;
+  height: auto;
+
+  &__section {
+    margin-bottom: 1rem;
+  }
+
+  &__toggle-button {
+    font-weight: bold;
+  }
+
+  &__list {
+    margin: 0;
+    padding-left: 0;
+  }
+
+  &__item {
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: #f8f9fa;
+    }
+  }
+
+  &__item-icon {
+    color: var(--primary-hover);
+  }
+
+  &__logout-button {
+    margin-top: 2rem;
+    font-weight: 600;
+    color: var(--primary);
+  }
+}
+
+.actived {
+  background-color: #c4dffa;
+  font-weight: bold;
+  color: #2179d1;
+
+  &:hover {
+    background-color: #e0efff;
+    color: #2179d1;
+  }
+}
