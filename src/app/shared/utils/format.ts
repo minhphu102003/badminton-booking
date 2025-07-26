@@ -29,3 +29,12 @@ export const formatDateRangeString = (
 
   return `${dateStr} ${startStr} - ${endStr}`;
 };
+
+export function formatJoinDate(dateString?: string): string {
+  if (!dateString) return '';
+  const date = new Date(dateString);
+  return date.toLocaleString('en-US', {
+    month: 'short',
+    year: 'numeric',
+  });
+}
