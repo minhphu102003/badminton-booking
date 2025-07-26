@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { authApiService } from '@/app/infrastructure/api/rest/authApi';
-import { User, LoginCredentials, AuthAction, RegisterCredentials } from './types';
+import { User, LoginCredentials, AuthAction, RegisterCredentials, RegisterResponse } from './types';
 
 export const loginStart = (): AuthAction => ({
   type: 'LOGIN_REQUEST',
@@ -47,9 +47,9 @@ export const registerStart = (): AuthAction => ({
   type: 'REGISTER_REQUEST',
 });
 
-export const registerSuccess = (user: User): AuthAction => ({
+export const registerSuccess = (registerResponse: RegisterResponse): AuthAction => ({
   type: 'REGISTER_SUCCESS',
-  payload: user,
+  payload: registerResponse,
 });
 
 export const registerFailure = (error: string): AuthAction => ({
@@ -58,7 +58,7 @@ export const registerFailure = (error: string): AuthAction => ({
 });
 
 type RegisterCallbacks = {
-  onSuccess?: (user: User) => void;
+  onSuccess?: (user: RegisterResponse) => void;
   onError?: (message: string) => void;
 };
 
@@ -66,7 +66,7 @@ export const registerUser = (
   credentials: RegisterCredentials,
   callbacks: RegisterCallbacks = {},
 ) => {
-  return async (dispatch: Dispatch<AuthAction>): Promise<User | undefined> => {
+  return async (dispatch: Dispatch<AuthAction>): Promise<RegisterResponse | undefined> => {
     const { onSuccess, onError } = callbacks;
     dispatch(registerStart());
 
@@ -75,8 +75,8 @@ export const registerUser = (
       dispatch(registerSuccess(user));
       onSuccess?.(user);
       return user;
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
+      console.log(err);
       const errorMessage = 'Register failed';
       dispatch(registerFailure(errorMessage));
       onError?.(errorMessage);

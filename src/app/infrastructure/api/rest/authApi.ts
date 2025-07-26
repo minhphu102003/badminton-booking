@@ -1,6 +1,6 @@
 import { LoginInput } from '@/app/domain/validation/loginSchema';
 import { RegisterInput } from '@/app/domain/validation/registerSchema';
-import { User } from '../../store/api/auth/types';
+import { RegisterResponse, User } from '../../store/api/auth/types';
 import { BaseApiService } from './baseApiService';
 import { API_ENDPOINTS } from './endPoints';
 
@@ -10,7 +10,12 @@ export class AuthApiService extends BaseApiService {
   }
 
   register(data: RegisterInput) {
-    return this.post<RegisterInput, User>(API_ENDPOINTS.REGISTER, data);
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { repassword, ...submitData } = data;
+    return this.post<Omit<RegisterInput, 'repassword'>, RegisterResponse>(
+      API_ENDPOINTS.REGISTER,
+      submitData,
+    );
   }
 }
 

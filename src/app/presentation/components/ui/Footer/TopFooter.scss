@@ -1,0 +1,11 @@
+.top-footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @media (max-width: 576px) {
+    .footer-group--wrap {
+      flex-basis: 25%;
+    }
+  }
+}

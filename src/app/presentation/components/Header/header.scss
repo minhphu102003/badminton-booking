@@ -9,6 +9,26 @@
     max-width: 1280px;
     margin: 0 auto;
   }
+
+  .hide-on-mobile {
+    display: inline-block;
+  }
+
+  @media (max-width: 768px) {
+    .hide-on-mobile {
+      display: none;
+    }
+
+    .header__nav-toggle {
+      display: block;
+    }
+  }
+
+  @media (max-width: 580px) {
+    .hide-on-small-screen {
+      display: none;
+    }
+  }
 }
 
 .wrapper__headerMenu {

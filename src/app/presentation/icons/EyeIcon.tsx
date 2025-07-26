@@ -1,8 +1,5 @@
-type Props = {
-  className?: string;
-  onClick?: () => void;
-};
+import BaseIcon from './BaseIcon';
 
-export default function EyeICon({ className, onClick }: Props) {
-  return <i className={`bi bi-eye ${className}`} aria-hidden="true" onClick={onClick}></i>;
+export default function EyeICon(props: React.HTMLAttributes<HTMLSpanElement>) {
+  return <BaseIcon iconClass="bi bi-eye" {...props} />;
 }

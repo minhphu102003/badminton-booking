@@ -39,7 +39,7 @@ export default function Dropdown({
   }, [items]);
 
   return (
-    <li className={`dropdown ${customClassName}`}>
+    <li className={`dropdown hide-on-small-screen ${customClassName}`}>
       <button
         ref={buttonRef}
         className={`btn btn-outline-primary dropdown-toggle ${buttonClassName}`}

@@ -11,3 +11,5 @@ export { default as TiktokIcon } from './TiktokIcon';
 export { default as WhatsappIcon } from './WhatsappIcon';
 export { default as EyeSlashIcon } from './EyeSlashIcon';
 export { default as PencilIcon } from './PencilIcon';
+export { default as PlusIcon } from './PlusIcon';
+export { default as CloseIcon } from './CloseIcon';

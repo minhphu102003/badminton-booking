@@ -8,7 +8,7 @@ type Props = {
 
 export default function TopFooter({ logoUrl }: Props) {
   return (
-    <div className="d-flex justify-content-between">
+    <div className="top-footer d-flex justify-content-between align-items-center">
       <div className="me-5">
         <HeaderLogo src={logoUrl} />
       </div>
@@ -30,6 +30,7 @@ export default function TopFooter({ logoUrl }: Props) {
       />
       <FooterLinkGroup
         title="Support"
+        className="footer-group--wrap"
         links={[
           { label: 'Help Centre', href: '' },
           { label: 'Contact Us', href: '' },
@@ -37,6 +38,7 @@ export default function TopFooter({ logoUrl }: Props) {
       />
       <FooterLinkGroup
         title="Legal"
+        className="footer-group--wrap"
         links={[
           { label: 'Terms of Use', href: '' },
           { label: 'Privacy Policy', href: '' },

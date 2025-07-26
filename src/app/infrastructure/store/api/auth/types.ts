@@ -7,6 +7,18 @@ export interface User {
   avatar?: string;
 }
 
+export interface RegisterResponse {
+  id: string;
+  email: string;
+  name: string;
+  role: 'PLAYER' | 'ADMIN' | 'MANAGER';
+  skillLevel: 'BEGINNER' | 'INTERMEDIATE' | 'ADVANCED';
+  googleId: string | null;
+  createAt: string;
+  updateAt: string;
+  deletedAt: string | null;
+}
+
 export interface LoginCredentials {
   email: string;
   password: string;
@@ -39,7 +51,7 @@ export interface RegisterStartAction {
 
 export interface RegisterSuccessAction {
   type: 'REGISTER_SUCCESS';
-  payload: User;
+  payload: RegisterResponse;
 }
 
 export interface RegisterFailureAction {

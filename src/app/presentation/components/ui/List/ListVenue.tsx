@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useEffect, useMemo, useState } from 'react';
 import { Venue } from '../../../constants/sportVenue';
 import { Button } from '../Button';
 import { VenueCard } from '../Card';
@@ -20,11 +21,21 @@ export default function SportVenueList({
   onBook,
   onView,
 }: Props) {
-  const venues = venuesBySport[selectedSport] ?? [];
+  const allVenues = useMemo(() => {
+    return venuesBySport[selectedSport] ?? [];
+  }, [venuesBySport, selectedSport]);
+
+  const [visibleVenues, setVisibleVenues] = useState<Venue[]>([]);
+
+  useEffect(() => {
+    const isMobile = window.innerWidth <= 576;
+    const slicedVenues = isMobile ? allVenues.slice(0, 2) : allVenues;
+    setVisibleVenues(slicedVenues);
+  }, [selectedSport, allVenues]);
 
   return (
     <div className="d-flex flex-column align-items-center m-3">
-      {venues.length === 0 ? (
+      {allVenues.length === 0 ? (
         <EmptyVenue />
       ) : (
         <>
@@ -36,7 +47,7 @@ export default function SportVenueList({
             transition={{ duration: 0.3 }}
           >
             <div className="venue-grid">
-              {venues.map((venue) => (
+              {visibleVenues.map((venue) => (
                 <div key={venue.id} className="venue-grid__item">
                   <VenueCard
                     venueName={venue.venueName}
@@ -55,7 +66,7 @@ export default function SportVenueList({
             variant="ghost"
             className="see-more-btn"
             onClick={onSeeMoreClick}
-            disabled={venues.length < 8}
+            disabled={allVenues.length < 8}
           >
             See more venues
           </Button>

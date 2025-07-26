@@ -1,6 +1,7 @@
 .bottom-footer {
   border-top: 1px solid #ccc;
   margin: 50px 0;
+  position: relative;
 
   .social-link {
     display: flex;
@@ -21,6 +22,66 @@
     svg {
       width: 20px;
       height: 20px;
+    }
+  }
+
+  .social-list {
+    @media (max-width: 768px) {
+      display: none !important;
+    }
+  }
+
+  .toggle-social-btn {
+    background-color: var(--primary);
+    color: white;
+    font-size: 24px;
+    border: none;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    display: none;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  .floating-social-menu {
+    position: absolute;
+    top: 0;
+    right: 50px;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+
+    li {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(0, 0) scale(0.5);
+      opacity: 0;
+      transition: all 0.4s ease;
+    }
+
+    &.open {
+      opacity: 1;
+      pointer-events: auto;
+
+      @for $i from 1 through 5 {
+        li:nth-child(#{$i}) {
+          $angle: 22.5deg * ($i - 1);
+          $radius: 100px;
+          transform: translate(-$radius * cos($angle), -$radius * sin($angle)) scale(1);
+          opacity: 1;
+          transition-delay: #{0.05s * $i};
+        }
+      }
+    }
+
+    @media (min-width: 769px) {
+      display: none !important;
     }
   }
 }
