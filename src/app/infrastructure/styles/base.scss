@@ -69,10 +69,21 @@ body {
 
 .container-custom {
   width: 100%;
-  padding: 0 12px;
+  padding: 0;
 
   @media (min-width: 992px) {
     width: 80vw;
     margin: 0 auto;
+  }
+}
+
+.with-sidebar-layout {
+  display: flex;
+  height: auto;
+
+  .primary-content-area {
+    flex-grow: 1;
+    padding: 1rem;
+    overflow: auto;
   }
 }

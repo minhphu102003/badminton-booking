@@ -36,3 +36,8 @@
   max-width: 1280px;
   margin: 0 auto;
 }
+
+header {
+  box-shadow: var(--shadow-md);
+  margin-bottom: 10px;
+}
