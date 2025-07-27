@@ -1,0 +1,37 @@
+.information-detail {
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+
+  &__contact {
+    margin-top: 1rem;
+
+    &-icon {
+      color: var(--primary);
+      margin-right: 5px;
+    }
+
+    &-label {
+      font-weight: var(--font-weight-medium);
+      margin-bottom: 0.25rem;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    &-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    &-email {
+      margin: 0;
+      font-size: var(--font-size-sm);
+      color: var(--text-primary, #333);
+    }
+  }
+}

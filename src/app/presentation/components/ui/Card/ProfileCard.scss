@@ -1,0 +1,46 @@
+.profile-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+
+  cursor: pointer;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+
+  &__icon {
+    flex-shrink: 0;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text);
+  }
+
+  &__description {
+    margin: 0.25rem 0 0.75rem 0;
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+  }
+
+  &__link {
+    font-size: 0.875rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--primary);
+    text-decoration: none;
+    padding: 0;
+
+    &-icon {
+      margin-left: 10px;
+      color: var(--primary);
+      background-color: rgb(225, 225, 225);
+      padding: 2px 4px;
+      border-radius: 50%;
+    }
+  }
+}

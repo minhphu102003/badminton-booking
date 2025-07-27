@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 // import { localStorageService } from "@/app/infrastructure/browser/localStorage";
 import { User } from '@/app/infrastructure/store/api/auth/types';
 import { RootState } from '@/app/infrastructure/store/rootReducer';
-import { UserInformation } from '@presentation/components/ui/User';
+import { UserInformation, InformationDetail } from '@presentation/components/ui/User';
 
 export default function HomePage() {
   const reduxUser = useSelector((state: RootState) => state.auth.user);
@@ -43,14 +43,17 @@ export default function HomePage() {
   };
 
   return (
-    <UserInformation
-      user={{
-        email: user?.email,
-        imgUrl: imgUrl,
-        userName: user?.name,
-        timeJoin: '2025-07-01T10:00:00.000Z',
-      }}
-      onEdit={handleEdit}
-    />
+    <>
+      <UserInformation
+        user={{
+          email: user?.email,
+          imgUrl: imgUrl,
+          userName: user?.name,
+          timeJoin: '2025-07-01T10:00:00.000Z',
+        }}
+        onEdit={handleEdit}
+      />
+      <InformationDetail email={user?.email || ''} />
+    </>
   );
 }
