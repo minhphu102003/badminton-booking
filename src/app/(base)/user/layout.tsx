@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { SidebarUser } from '@presentation/components/ui/Sidebar';
-import { PencilIcon } from '@presentation/icons';
+import { PencilIcon, BellFillICon } from '@presentation/icons';
 
 type LayoutWithSidebarProps = {
   children: ReactNode;
@@ -10,19 +10,20 @@ const listItems = [
   {
     title: 'Me',
     items: [
-      { label: 'My Profile', icon: <PencilIcon />, path: '' },
-      { label: 'My Bookings', icon: <PencilIcon />, path: '/bookings' },
-      { label: 'My Games', icon: <PencilIcon />, path: '/games' },
-      { label: 'My Invoices', icon: <PencilIcon />, path: '/invoices' },
+      { label: 'My Profile', icon: <PencilIcon />, path: '/user' },
+      { label: 'My Bookings', icon: <PencilIcon />, path: '/user/bookings' },
+      { label: 'My Games', icon: <PencilIcon />, path: '/user/games' },
+      { label: 'My Invoices', icon: <PencilIcon />, path: '/user/invoices' },
+      { label: 'Notification', icon: <BellFillICon />, path: '/user/notification' },
     ],
   },
   {
     title: 'Account Settings',
     items: [
-      { label: 'Edit Profile', icon: <PencilIcon />, path: '/edit-profile' },
-      { label: 'Link Social Accounts', icon: <PencilIcon />, path: '/link-social' },
-      { label: 'Create Password', icon: <PencilIcon />, path: '/create-password' },
-      { label: 'Language', icon: <PencilIcon />, path: '/language' },
+      { label: 'Edit Profile', icon: <PencilIcon />, path: '/user/edit-profile' },
+      { label: 'Link Social Accounts', icon: <PencilIcon />, path: '/user/link-social' },
+      { label: 'Create Password', icon: <PencilIcon />, path: '/user/create-password' },
+      { label: 'Language', icon: <PencilIcon />, path: '/user/language' },
     ],
   },
   {

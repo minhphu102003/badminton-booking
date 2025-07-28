@@ -17,6 +17,7 @@ export class BaseApiService {
     const res = await fetch(`${BASE_URL}${url}`, {
       method: 'GET',
       headers: this.getHeaders(),
+      credentials: 'include',
     });
 
     return this.handleResponse<TResult>(res);
@@ -31,6 +32,7 @@ export class BaseApiService {
       method: 'POST',
       headers: this.getHeaders(isFormData),
       body: isFormData ? (data as unknown as FormData) : JSON.stringify(data),
+      credentials: 'include',
     });
 
     return this.handleResponse<TResult>(res);
@@ -45,6 +47,7 @@ export class BaseApiService {
       method: 'PUT',
       headers: this.getHeaders(isFormData),
       body: isFormData ? (data as unknown as FormData) : JSON.stringify(data),
+      credentials: 'include',
     });
 
     return this.handleResponse<TResult>(res);
@@ -54,6 +57,7 @@ export class BaseApiService {
     const res = await fetch(`${BASE_URL}${url}`, {
       method: 'DELETE',
       headers: this.getHeaders(),
+      credentials: 'include',
     });
 
     return this.handleResponse<TResult>(res);

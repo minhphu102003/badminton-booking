@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useRef, useState } from 'react';
-import { User } from '@infrastructure/store/api/auth/types';
+import { User } from '@/app/infrastructure/store/auth/types';
 import { useClickOutside } from '@presentation/hooks/useClickOutside';
 import { PencilIcon } from '@presentation/icons';
 import { LanguageDropdown } from '../../LanguageDropdown';
@@ -74,6 +74,9 @@ export default function HeaderNav({ user }: HeaderNavProps) {
               </div>
               <Link href="/profile" className="dropdown-item">
                 View Profile
+              </Link>
+              <Link href="/user/notification" className="dropdown-item">
+                Notification
               </Link>
               <button onClick={handleLogout} className="dropdown-item">
                 Logout

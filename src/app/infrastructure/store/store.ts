@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import { ThunkMiddleware, thunk } from 'redux-thunk';
-import { AuthAction } from './api/auth/types';
-import { BookingAction } from './api/booking/reducer';
+import { AuthAction } from './auth/types';
+import { BookingAction } from './booking/reducer';
 import rootReducer, { RootState } from './rootReducer';
 
 type AppActions = BookingAction | AuthAction;

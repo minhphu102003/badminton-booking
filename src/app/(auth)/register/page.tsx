@@ -2,8 +2,8 @@
 
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
+import { registerUser } from '@/app/infrastructure/store/auth/actions';
 import { RegisterInput } from '@domain/validation/registerSchema';
-import { registerUser } from '@infrastructure/store/api/auth/actions';
 import { AppDispatch } from '@infrastructure/store/store';
 import { showError, showSuccess } from '@infrastructure/ui/toast';
 import { RegisterForm } from '@presentation/components/ui/Form';
