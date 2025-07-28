@@ -1,7 +1,7 @@
 'use client';
 
 import './SearchForm.scss';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { SEARCH_DEFAULTS } from '@presentation/constants/searchDefaults';
 import { SportCategory } from '@presentation/constants/sportCategories';
 import { SportItem, SPORTS_DATA } from '@presentation/constants/sports';
@@ -55,8 +55,13 @@ export default function SearchFormUI({
   const modalRef = useRef<HTMLDivElement>(null);
   const locationSuggestRef = useRef<HTMLDivElement>(null);
   const datepickerRef = useRef<HTMLDivElement>(null);
+  const [isClient, setIsClient] = useState(false);
   const width = useWindowWidth();
-  const isMobile = width < 991;
+  const isMobile = isClient && width < 991;
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
   useClickOutside(modalRef, () => setOpen(false), open);
   useClickOutside(
     locationSuggestRef,

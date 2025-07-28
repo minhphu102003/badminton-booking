@@ -3,8 +3,8 @@
 import './header.scss';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { User } from '@/app/infrastructure/store/auth/types';
 import { localStorageService } from '@infrastructure/browser/localStorage';
-import { User } from '@infrastructure/store/api/auth/types';
 import { RootState } from '@infrastructure/store/rootReducer';
 import { HeaderNav } from '../ui/HeaderNav';
 import { HeaderLogo } from '../ui/Logo';

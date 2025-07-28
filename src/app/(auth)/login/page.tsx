@@ -2,10 +2,10 @@
 
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
+import { loginUser } from '@/app/infrastructure/store/auth/actions';
 import { showSuccess, showError } from '@/app/infrastructure/ui/toast';
 import { LoginInput } from '@domain/validation/loginSchema';
 import { localStorageService } from '@infrastructure/browser/localStorage';
-import { loginUser } from '@infrastructure/store/api/auth/actions';
 import { AppDispatch } from '@infrastructure/store/store';
 import { LoginForm } from '@presentation/components/ui/Form';
 

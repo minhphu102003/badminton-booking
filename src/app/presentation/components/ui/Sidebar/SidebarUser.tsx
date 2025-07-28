@@ -60,7 +60,7 @@ export default function SidebarUser({ listItems, onLogout }: SideBarUserProps) {
                 transition={{ duration: 0.3, ease: 'easeInOut' }}
               >
                 {group.items.map((item, i) => {
-                  const isActive = pathname.replace(/^\/user/, '') === item.path;
+                  const isActive = pathname === item.path;
 
                   return (
                     <li key={i} className="sidebar__item">

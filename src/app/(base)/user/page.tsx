@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 // import { localStorageService } from "@/app/infrastructure/browser/localStorage";
-import { User } from '@/app/infrastructure/store/api/auth/types';
+import { User } from '@/app/infrastructure/store/auth/types';
 import { RootState } from '@/app/infrastructure/store/rootReducer';
 import { UserInformation, InformationDetail } from '@presentation/components/ui/User';
 

@@ -26,7 +26,9 @@
       "@interface-adapters/*": ["./src/app/interface-adapters/*"],
       "@components/*": ["./src/app/components/*"],
       "@presentation/*": ["./src/app/presentation/*"],
-      "@domain/*": ["./src/app/domain/*"]
+      "@domain/*": ["./src/app/domain/*"],
+      "@application/*": ["./src/app/application/*"],
+      "@shared/*": ["./src/app/shared/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

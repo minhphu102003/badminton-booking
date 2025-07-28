@@ -1,6 +1,6 @@
 import { LoginInput } from '@/app/domain/validation/loginSchema';
 import { RegisterInput } from '@/app/domain/validation/registerSchema';
-import { RegisterResponse, User } from '../../store/api/auth/types';
+import { RegisterResponse, User } from '../../store/auth/types';
 import { BaseApiService } from './baseApiService';
 import { API_ENDPOINTS } from './endPoints';
 

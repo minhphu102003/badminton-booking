@@ -20,3 +20,4 @@ export { default as ArrowRightIcon } from './ArrowRightIcon';
 export { default as CalendarIcon } from './CalendarIcon';
 export { default as GridIcon } from './GridIcon';
 export { default as EnvelopeIcon } from './EnvelopeIcon';
+export { default as BellFillICon } from './BellFillICon';

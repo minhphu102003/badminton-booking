@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { languageService } from '@/app/application/language/services/languageService';
+import { languageService } from '@/app/application/language/languageService';
 import GlobeIcon from '../../icons/GlobeIcon';
 import ClientBootstrapLoader from '../ui/ClientBootstrapLoader';
 import { Dropdown } from '../ui/DropDown';
