@@ -18,15 +18,6 @@
     }
   }
 
-  #location-input {
-    border: none;
-    &:focus,
-    &:hover {
-      outline: none;
-      box-shadow: none;
-    }
-  }
-
   .clear-icon {
     font-size: 1rem;
     cursor: pointer;
@@ -42,5 +33,16 @@
     left: 0;
     z-index: 1000;
     min-width: 250px;
+  }
+}
+
+.form-control#location-input {
+  border: none;
+  width: 90%;
+  margin-right: 20px;
+  &:focus,
+  &:hover {
+    outline: none;
+    box-shadow: none;
   }
 }
