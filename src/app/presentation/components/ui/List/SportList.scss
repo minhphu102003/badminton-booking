@@ -35,6 +35,7 @@
 
   scrollbar-width: none;
   -ms-overflow-style: none;
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -79,6 +80,11 @@
         background-color: var(--primary);
       }
     }
+  }
+
+  @media (max-width: 991.98px) {
+    border: 1px solid #ccc;
+    padding: 0;
   }
 
   &:hover {

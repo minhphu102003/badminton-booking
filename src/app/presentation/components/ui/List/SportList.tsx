@@ -85,7 +85,7 @@ export default function VenueList({ listSport, selectedSport, onSelectSport }: P
             className={`venue-item ${selectedSport === sport.label ? 'active' : ''}`}
             onClick={() => onSelectSport(sport.label)}
           >
-            <span className="icon">{sportIcons[sport.id]}</span>
+            <span className="icon d-none d-lg-inline">{sportIcons[sport.id]}</span>
             <span className="label">{sport.label}</span>
           </li>
         ))}

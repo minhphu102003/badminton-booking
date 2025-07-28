@@ -6,6 +6,8 @@ import { SEARCH_DEFAULTS } from '@presentation/constants/searchDefaults';
 import { SportCategory } from '@presentation/constants/sportCategories';
 import { SportItem, SPORTS_DATA } from '@presentation/constants/sports';
 import { useClickOutside } from '@presentation/hooks/useClickOutside';
+import { useWindowWidth } from '@presentation/hooks/useWindowWidth';
+import { SearchIcon } from '@presentation/icons';
 import { Button } from '../Button';
 import { DatePicker } from '../DatePicker';
 import { SportCategoryModal } from '../Modal';
@@ -53,6 +55,8 @@ export default function SearchFormUI({
   const modalRef = useRef<HTMLDivElement>(null);
   const locationSuggestRef = useRef<HTMLDivElement>(null);
   const datepickerRef = useRef<HTMLDivElement>(null);
+  const width = useWindowWidth();
+  const isMobile = width < 991;
   useClickOutside(modalRef, () => setOpen(false), open);
   useClickOutside(
     locationSuggestRef,
@@ -63,6 +67,55 @@ export default function SearchFormUI({
   );
 
   useClickOutside(datepickerRef, () => setOpenDatePicker(false), openDatePicker);
+
+  if (isMobile) {
+    return (
+      <div className="w-100 d-flex flex-column justify-content-center">
+        <div className="position-relative w-100 d-flex align-items-center justify-content-between gap-2">
+          <SearchIcon className="text-dark fs-4 ms-4" />
+          <input
+            id="location-input"
+            className="form-control text-muted no-outline border-0 "
+            placeholder="Search venue name, city"
+            value={location}
+            onChange={(e) => {
+              const newValue = e.target.value;
+              setLocation(newValue);
+              setShowLocationSuggest(true);
+
+              const filtered = allLocationSuggestions.filter((item) =>
+                item.toLowerCase().includes(newValue.toLowerCase()),
+              );
+              setLocationSuggestions(filtered);
+            }}
+            onFocus={() => setShowLocationSuggest(true)}
+          />
+          {location !== SEARCH_DEFAULTS.LOCATION && (
+            <span
+              className="clear-icon position-absolute top-50 end-0 translate-middle-y me-2 text-black"
+              onClick={() => {
+                setLocation(SEARCH_DEFAULTS.LOCATION);
+                setShowLocationSuggest(false);
+              }}
+            >
+              &times;
+            </span>
+          )}
+        </div>
+        {showLocationSuggest && locationSuggestions.length > 0 && (
+          <div ref={locationSuggestRef} className="w-100">
+            <LocationSuggest
+              suggestions={locationSuggestions}
+              onSelect={(loc) => {
+                onLocationSelect(loc);
+                setShowLocationSuggest(false);
+              }}
+            />
+          </div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="search-form d-flex justify-content-between align-items-center gap-4 w-100 px-4">
