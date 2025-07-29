@@ -32,4 +32,10 @@ export const localStorageService = {
       localStorage.removeItem(key);
     }
   },
+
+  removeObject: (key: string) => {
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem(key);
+    }
+  },
 };

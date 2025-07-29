@@ -1,10 +1,10 @@
-import { Banner } from '@presentation/components/Banner';
 import { Landing } from '@presentation/components/Landing';
+import { BannerWithSearch } from '../presentation/components/ui/Banner';
 
 export default function HomePage() {
   return (
     <>
-      <Banner />
+      <BannerWithSearch />
       <Landing />
     </>
   );

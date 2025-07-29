@@ -1,5 +1,9 @@
+'use client';
+
 import { ReactNode } from 'react';
+import { showError, showSuccess } from '@infrastructure/ui/toast';
 import { SidebarUser } from '@presentation/components/ui/Sidebar';
+import { useLogout } from '@presentation/hooks/useLogout';
 import { PencilIcon, BellFillICon } from '@presentation/icons';
 
 type LayoutWithSidebarProps = {
@@ -51,9 +55,21 @@ const listItems = [
 ];
 
 export default function LayoutWithSidebar({ children }: LayoutWithSidebarProps) {
+  const { logout, loading } = useLogout();
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      showSuccess('Successfully logged out!');
+    } catch (error) {
+      console.log(error);
+      showError('Logout failed. Please try again!');
+    }
+  };
+
   return (
     <div className="with-sidebar-layout container-custom">
-      <SidebarUser listItems={listItems} />
+      <SidebarUser onLogout={handleLogout} isLogoutLoading={loading} listItems={listItems} />
 
       <main className="primary-content-area">{children}</main>
     </div>

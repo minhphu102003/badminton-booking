@@ -8,7 +8,11 @@ import { SportList } from '../ui/List';
 import { ListVenue } from '../ui/List';
 import { ListBlog } from '../ui/List';
 
-export default function Landing() {
+type LandingProps = {
+  isDisplayBlog?: boolean;
+};
+
+export default function Landing({ isDisplayBlog = true }: LandingProps) {
   const [selectedSport, setSelectedSport] = useState('football');
   const router = useRouter();
 
@@ -38,7 +42,7 @@ export default function Landing() {
         onBook={handleBook}
       />
 
-      <ListBlog data={blogListData} />
+      {isDisplayBlog && <ListBlog data={blogListData} />}
     </section>
   );
 }
