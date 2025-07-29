@@ -5,6 +5,7 @@ import {
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
   REGISTER_FAILURE,
+  LOGOUT,
 } from './actionTypes';
 import { AuthAction, User } from './types';
 
@@ -42,6 +43,13 @@ export const authReducer = (state: AuthState = initialState, action: AuthAction)
     case LOGIN_FAILURE:
     case REGISTER_FAILURE:
       return { ...state, loading: false, error: action.payload };
+
+    case LOGOUT:
+      return {
+        ...state,
+        loading: false,
+        user: null,
+      };
 
     default:
       return state;

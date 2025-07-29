@@ -3,8 +3,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useRef, useState } from 'react';
-import { User } from '@/app/infrastructure/store/auth/types';
+import { User } from '@infrastructure/store/auth/types';
+import { showError, showSuccess } from '@infrastructure/ui/toast';
 import { useClickOutside } from '@presentation/hooks/useClickOutside';
+import { useLogout } from '@presentation/hooks/useLogout';
 import { PencilIcon } from '@presentation/icons';
 import { LanguageDropdown } from '../../LanguageDropdown';
 import { Button } from '../Button';
@@ -29,12 +31,18 @@ const navItems: NavItem[] = [
 export default function HeaderNav({ user }: HeaderNavProps) {
   const menuRef = useRef<HTMLLIElement>(null);
   const [open, setOpen] = useState(false);
+  const { logout, loading } = useLogout();
 
   useClickOutside(menuRef, () => setOpen(false));
 
-  const handleLogout = () => {
-    // TODO: logout logic
-    console.log('Logging out...');
+  const handleLogout = async () => {
+    try {
+      await logout();
+      showSuccess('Successfully logged out!');
+    } catch (error) {
+      console.log(error);
+      showError('Logout failed. Please try again!');
+    }
   };
 
   return (
@@ -72,15 +80,20 @@ export default function HeaderNav({ user }: HeaderNavProps) {
                   </Link>
                 </div>
               </div>
-              <Link href="/profile" className="dropdown-item">
+              <Link href="/user" className="dropdown-item">
                 View Profile
               </Link>
               <Link href="/user/notification" className="dropdown-item">
                 Notification
               </Link>
-              <button onClick={handleLogout} className="dropdown-item">
+              <Button
+                onClick={handleLogout}
+                variant="ghost"
+                disabled={loading}
+                className="dropdown-item"
+              >
                 Logout
-              </button>
+              </Button>
             </div>
           )}
         </li>

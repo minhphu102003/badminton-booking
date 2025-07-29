@@ -57,10 +57,15 @@ export interface RegisterFailureAction {
   payload: string;
 }
 
+export interface LogoutAction {
+  type: 'LOGOUT';
+}
+
 export type AuthAction =
   | LoginStartAction
   | LoginSuccessAction
   | LoginFailureAction
   | RegisterStartAction
   | RegisterSuccessAction
-  | RegisterFailureAction;
+  | RegisterFailureAction
+  | LogoutAction;

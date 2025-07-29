@@ -17,6 +17,10 @@ export class AuthApiService extends BaseApiService {
       submitData,
     );
   }
+
+  logout() {
+    return this.post<undefined, { message: string }>(API_ENDPOINTS.LOGOUT, undefined);
+  }
 }
 
 export const authApiService = new AuthApiService();

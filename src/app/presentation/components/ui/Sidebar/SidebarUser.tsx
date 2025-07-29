@@ -21,9 +21,10 @@ type MenuGroup = {
 type SideBarUserProps = {
   listItems: MenuGroup[];
   onLogout?: () => void;
+  isLogoutLoading: boolean;
 };
 
-export default function SidebarUser({ listItems, onLogout }: SideBarUserProps) {
+export default function SidebarUser({ listItems, onLogout, isLogoutLoading }: SideBarUserProps) {
   const [expanded, setExpanded] = useState<boolean[]>(listItems.map((_, index) => index < 2));
   const pathname = usePathname();
   const router = useRouter();
@@ -85,6 +86,7 @@ export default function SidebarUser({ listItems, onLogout }: SideBarUserProps) {
         className="sidebar__logout-button d-flex align-items-center gap-3 w-100"
         variant="ghost"
         onClick={onLogout}
+        disabled={isLogoutLoading}
       >
         <LogoutICon />
         <span className="text-uppercase">LOG OUT</span>
