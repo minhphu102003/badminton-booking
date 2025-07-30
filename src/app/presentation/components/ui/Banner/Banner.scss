@@ -11,32 +11,29 @@
   &--explore {
     background-image: url('https://www.courtsite.my/images/explore_page_header.jpg');
     height: 300px;
-    display: flex;
-    align-items: end;
+    align-items: flex-end;
   }
 
   &--search {
     background-image: url('https://www.courtsite.my/images/search-venue.jpg');
     height: 300px;
-    display: flex;
-    align-items: end;
+    align-items: flex-end;
   }
 
   &--deals {
     background-image: url('https://www.courtsite.my/images/deals.jpg');
     height: 300px;
-    display: flex;
-    align-items: end;
+    align-items: flex-end;
   }
 
-  .banner__overlay {
+  &__overlay {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: 1;
   }
 
-  .banner__content {
+  &__content {
     position: relative;
     z-index: 2;
     width: 100%;
@@ -44,17 +41,77 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+  }
 
-    .banner__title {
-      margin-bottom: 5vh;
+  &__title {
+    margin-bottom: 2vh;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  &__subtitle {
+    margin-bottom: 4vh;
+    font-size: 1rem;
+    color: #f0f0f0;
+  }
+
+  &__tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+  }
+
+  &__tab {
+    position: relative;
+    color: white;
+    padding-bottom: 8px;
+    transition: all 0.2s ease;
+    outline: none;
+    border: none;
+
+    &:focus {
+      border: none;
+      outline: none;
     }
 
-    .search-box {
-      border-radius: 50px;
-      height: 10vh;
-      background-color: white;
-      padding: 10px 0px;
-      margin: 0 auto;
+    &:hover {
+      background-color: inherit;
     }
+
+    &--active {
+      font-weight: bold;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: white;
+        animation: expand-line 0.25s ease-in-out forwards;
+      }
+    }
+  }
+
+  &__search-box {
+    border-radius: 50px;
+    height: 10vh;
+    background-color: white;
+    padding: 10px 20px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@keyframes expand-line {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
   }
 }

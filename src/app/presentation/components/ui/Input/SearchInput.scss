@@ -1,0 +1,17 @@
+.search-input {
+  &__wrapper {
+    border: 1px solid var(--text-secondary);
+    padding: 5px 15px;
+    border-radius: var(--radius-md);
+  }
+
+  &__icon {
+    margin-right: 8px;
+  }
+
+  &__field {
+    border: none;
+    outline: none;
+    flex: 1;
+  }
+}

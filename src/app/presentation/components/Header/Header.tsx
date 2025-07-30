@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { User } from '@/app/infrastructure/store/auth/types';
 import { localStorageService } from '@infrastructure/browser/localStorage';
 import { RootState } from '@infrastructure/store/rootReducer';
+import { showError, showSuccess } from '@infrastructure/ui/toast';
 import { HeaderNav } from '../ui/HeaderNav';
 import { HeaderLogo } from '../ui/Logo';
 import { HeaderMenu } from '../ui/Wrapper';
@@ -38,7 +39,7 @@ export default function Header({ isAuth = false }: HeaderProps) {
               src="https://png.pngtree.com/element_pic/00/16/09/2057e0eecf792fb.jpg"
               href="/"
             />
-            <HeaderNav user={user} />
+            <HeaderNav user={user} showError={showError} showSuccess={showSuccess} />
           </div>
         </div>
       </div>
