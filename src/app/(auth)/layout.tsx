@@ -4,7 +4,6 @@ import ReduxProvider from '@interface-adapters/providers/ReduxProvider';
 import { ToastProvider } from '@interface-adapters/providers/ToastProvider';
 import { Footer } from '@presentation/components/Footer';
 import { Header } from '@presentation/components/Header';
-import { PageTransition } from '@presentation/components/ui/Loading';
 
 export const metadata = siteMetadata;
 
@@ -14,11 +13,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <ReduxProvider>
           <ToastProvider />
-          <PageTransition>
-            <Header isAuth={true} />
-            <main>{children}</main>
-            <Footer />
-          </PageTransition>
+          <Header isAuth={true} />
+          <main>{children}</main>
+          <Footer />
         </ReduxProvider>
       </body>
     </html>

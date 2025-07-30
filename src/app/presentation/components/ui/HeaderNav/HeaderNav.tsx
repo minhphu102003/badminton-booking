@@ -4,16 +4,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useRef, useState } from 'react';
 import { User } from '@infrastructure/store/auth/types';
-import { showError, showSuccess } from '@infrastructure/ui/toast';
 import { useClickOutside } from '@presentation/hooks/useClickOutside';
 import { useLogout } from '@presentation/hooks/useLogout';
 import { PencilIcon } from '@presentation/icons';
+import { PUBLIC_ROUTES } from '@shared/constants/routes';
 import { LanguageDropdown } from '../../LanguageDropdown';
 import { Button } from '../Button';
 import './HeaderNav.scss';
 
 type HeaderNavProps = {
   user?: User | null;
+  showSuccess?: (msg: string) => void;
+  showError?: (msg: string) => void;
 };
 
 type NavItem = {
@@ -23,12 +25,12 @@ type NavItem = {
 };
 
 const navItems: NavItem[] = [
-  { label: 'Help', variant: 'ghost', href: '/help' },
-  { label: 'Sign Up', variant: 'ghost', href: '/register' },
-  { label: 'Log In', variant: 'primary', href: '/login' },
+  { label: 'Help', variant: 'ghost', href: PUBLIC_ROUTES.HELP },
+  { label: 'Sign Up', variant: 'ghost', href: PUBLIC_ROUTES.REGISTER },
+  { label: 'Log In', variant: 'primary', href: PUBLIC_ROUTES.LOGIN },
 ];
 
-export default function HeaderNav({ user }: HeaderNavProps) {
+export default function HeaderNav({ user, showSuccess, showError }: HeaderNavProps) {
   const menuRef = useRef<HTMLLIElement>(null);
   const [open, setOpen] = useState(false);
   const { logout, loading } = useLogout();
@@ -38,10 +40,10 @@ export default function HeaderNav({ user }: HeaderNavProps) {
   const handleLogout = async () => {
     try {
       await logout();
-      showSuccess('Successfully logged out!');
+      showSuccess?.('Successfully logged out!');
     } catch (error) {
       console.log(error);
-      showError('Logout failed. Please try again!');
+      showError?.('Logout failed. Please try again!');
     }
   };
 

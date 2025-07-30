@@ -1,0 +1,14 @@
+.activeItem {
+  background-color: #bebebe;
+  font-weight: bold;
+  border-radius: var(--radius-md);
+  color: var(--text);
+
+  button {
+    &:hover {
+      background-color: inherit;
+      color: inherit;
+      transform: scale(1.05);
+    }
+  }
+}
