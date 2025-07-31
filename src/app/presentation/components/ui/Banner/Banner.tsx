@@ -1,6 +1,8 @@
 'use client';
 
+import { AnimatePresence, motion } from 'framer-motion';
 import { usePathname, useRouter } from 'next/navigation';
+
 import { useEffect, useState } from 'react';
 import { SearchFormContainer } from '../../Form';
 import { Button } from '../Button';
@@ -73,11 +75,20 @@ export default function BannerWithSearch({ variant = 'landing' }: Props) {
           </div>
         )}
 
-        {variant !== 'deals' && (
-          <div className="banner__search-box">
-            <SearchFormContainer onSearch={handleSearch} />
-          </div>
-        )}
+        <AnimatePresence mode="wait">
+          {variant !== 'deals' && activeTab !== 'games' && (
+            <motion.div
+              key="search-box"
+              className="banner__search-box"
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+            >
+              <SearchFormContainer onSearch={handleSearch} />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
