@@ -21,3 +21,6 @@ export { default as CalendarIcon } from './CalendarIcon';
 export { default as GridIcon } from './GridIcon';
 export { default as EnvelopeIcon } from './EnvelopeIcon';
 export { default as BellFillICon } from './BellFillICon';
+export { default as FilterIcon } from './FilterIcon';
+export { default as ClockIcon } from './ClockIcon';
+export { default as PeopleFillIcon } from './PeopleFillIcon';

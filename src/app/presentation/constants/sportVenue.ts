@@ -14,6 +14,27 @@ export const SPORT_VENUE = [
   'other',
 ];
 
+export type SportVenueButton = {
+  id: string;
+  label: string;
+};
+
+export const SPORT_VENUE_BUTTON: SportVenueButton[] = [
+  { id: 'pickleball', label: 'Pickleball' },
+  { id: 'badminton', label: 'Badminton' },
+  { id: 'futsal', label: 'Futsal' },
+  { id: 'volleyball', label: 'Volleyball' },
+  { id: 'football', label: 'Football' },
+  { id: 'tennis', label: 'Tennis' },
+  { id: 'basketball', label: 'Basketball' },
+  { id: 'field-hockey', label: 'Field Hockey' },
+  { id: 'squash', label: 'Squash' },
+  { id: 'netball', label: 'Netball' },
+  { id: 'dodgeball', label: 'Dodgeball' },
+  { id: 'frisbee', label: 'Frisbee' },
+  { id: 'all', label: 'All' },
+];
+
 export const SPORT_VENUE_LIST = SPORT_VENUE.map((label, index) => ({
   id: index + 1,
   label,

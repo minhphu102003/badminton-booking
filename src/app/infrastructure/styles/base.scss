@@ -87,3 +87,9 @@ body {
     overflow: auto;
   }
 }
+
+.content-wrapper {
+  border-radius: var(--radius-md);
+  background-color: white;
+  padding: 1rem;
+}

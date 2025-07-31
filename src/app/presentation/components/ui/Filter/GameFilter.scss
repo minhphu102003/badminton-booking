@@ -1,0 +1,52 @@
+.game-filter {
+  padding: 16px;
+
+  &__header {
+    margin-bottom: 12px;
+
+    h1 {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__toggle-buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  &__location-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__location-button {
+    padding: 6px 12px;
+    border-radius: 20px;
+  }
+
+  &__day-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  &__day-button {
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
+
+  &__footer {
+    margin-top: 24px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
